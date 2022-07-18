@@ -37,3 +37,34 @@ impl RegId for ArmCoreRegId {
         Some((reg, Some(NonZeroUsize::new(4)?)))
     }
 }
+
+/// 64-bit ARM core register identifier.
+#[derive(Debug, Clone, Copy)]
+#[non_exhaustive]
+pub enum Aarch64CoreRegId {
+    /// General purpose registers (X0-X30)
+    Gpr(u8),
+    /// Stack Pointer
+    Sp,
+    /// Program Counter
+    Pc,
+    /// Current Program Status Register (cpsr)
+    Cpsr,
+}
+
+impl RegId for Aarch64CoreRegId {
+    fn from_raw_id(id: usize) -> Option<(Self, Option<NonZeroUsize>)> {
+        let reg = match id {
+            0..=30 => Self::Gpr(id as u8),
+            31 => Self::Sp,
+            32 => Self::Pc,
+            33 => Self::Cpsr,
+            _ => return None,
+        };
+        let reg_size = match id {
+            33 => 4,
+            _ => 8,
+        };
+        Some((reg, Some(NonZeroUsize::new(reg_size)?)))
+    }
+}

@@ -48,3 +48,22 @@ impl Arch for Armv4t {
         SingleStepGdbBehavior::Optional
     }
 }
+
+/// Implements `Arch` for the AArch64 architecture
+pub enum Aarch64 {}
+
+impl Arch for Aarch64 {
+    type Usize = u64;
+    type Registers = reg::Aarch64CoreRegs;
+    type RegId = reg::id::Aarch64CoreRegId;
+    type BreakpointKind = usize;
+
+    fn target_description_xml() -> Option<&'static str> {
+        Some(r#"<target version="1.0"><architecture>aarch64</architecture></target>"#)
+    }
+
+    #[inline(always)]
+    fn single_step_gdb_behavior() -> SingleStepGdbBehavior {
+        SingleStepGdbBehavior::Optional
+    }
+}
