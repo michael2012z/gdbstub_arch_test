@@ -1,18 +1,21 @@
+[dependencies.gdbstub]
+default-features = false
+version = "0.6"
+
+[dependencies.num-traits]
+default-features = false
+version = "0.2"
+
 [package]
-name = "gdbstub_arch"
-description = "Implementations of `gdbstub::arch::Arch` for various architectures."
 authors = ["Daniel Prilik <danielprilik@gmail.com>"]
-version = "0.2.3"
-license = "MIT OR Apache-2.0"
-edition = "2018"
-readme = "README.md"
-documentation = "https://docs.rs/gdbstub_arch"
-homepage = "https://github.com/daniel5151/gdbstub"
-repository  = "https://github.com/daniel5151/gdbstub"
-keywords = ["gdb", "emulation", "no_std", "debugging"]
 categories = ["development-tools::debugging", "embedded", "emulators", "no-std"]
-
-[dependencies]
-gdbstub = { path = "../", version = "0.6", default-features = false }
-
-num-traits = { version = "0.2", default-features = false }
+description = "Implementations of `gdbstub::arch::Arch` for various architectures."
+documentation = "https://docs.rs/gdbstub_arch"
+edition = "2018"
+homepage = "https://github.com/daniel5151/gdbstub"
+keywords = ["gdb", "emulation", "no_std", "debugging"]
+license = "MIT OR Apache-2.0"
+name = "gdbstub_arch"
+readme = "README.md"
+repository = "https://github.com/daniel5151/gdbstub"
+version = "0.2.3"
